@@ -1,4 +1,5 @@
 {% extends 'blog/base.html' %}
+{% load static %}
 {% block title %}
     All posts
 {% endblock %}
@@ -12,9 +13,11 @@
             <h2>{{ post.anons }}</h2>
             <div>
                 <p>{{ post.category.name }}</p>
-                <p>img</p>
+                <p><img src="{{ post.image.url }}" alt=""></p>
                 <p>{{ post.text }}</p>
             </div>
         </div>
+    {% empty %}
+        Nothing posted yet
     {% endfor %}
 {% endblock %}

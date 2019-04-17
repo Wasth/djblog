@@ -12,7 +12,7 @@ class Post(models.Model):
     title = models.CharField(max_length=32)
     anons = models.CharField(max_length=100)
     text = models.TextField()
-    image = models.ImageField(upload_to='blog/static/blog/images')
+    image = models.ImageField(upload_to='blog')
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
@@ -34,6 +34,7 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.user.username + ' - '+self.text[:10]
+
 
 class Profile(models.Model):
     avatar = models.ImageField(upload_to='blog/static/blog/images')
