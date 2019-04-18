@@ -4,15 +4,42 @@
     font-family: "Segoe UI", sans-serif;
 }
 .container {
-    max-width: 1200px;
+    max-width: 1240px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 /*#*/
 .header {
     padding: 15px 0;
     box-shadow: 0 0 15px rgba(0,0,0,0.5);
     z-index: 10;
+    background-color: #fff;
+    /*margin-bottom: 20px;*/
 }
 .wrapper {
     background: linear-gradient(to right, #de6161, #2657eb);
+    z-index: 1;
+}
+.wrapper .container {
+    display: flex;
+
+}
+.wrapper .content {
+    flex: 1;
+}
+.post {
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    border-radius: 5px;
+    margin-top: 20px;
+    padding: 20px;
+}
+.sidebar {
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    border-radius: 5px;
+    margin-top: 20px;
+    padding: 20px;
+    width: 300px;
+    margin-right: 20px;
 }

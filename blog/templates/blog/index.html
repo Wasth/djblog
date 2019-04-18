@@ -3,12 +3,13 @@
 {% block title %}
     All posts
 {% endblock %}
-<h1>Posts</h1>
+
 {% block content %}
-    <h1>All posts</h1>
+    <div class="post-panel">
+
+    </div>
     {% for post in posts %}
-        <div>
-            <h1>{{ post.title }}</h1>
+        <div class="post">
             <h1>{{ post.title }}</h1>
             <h2>{{ post.anons }}</h2>
             <div>
