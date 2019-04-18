@@ -11,7 +11,7 @@
 
 {% block content %}
     <div class="post-panel">
-
+        Sorting - Most Viewed
     </div>
     {% for post in posts %}
         <div class="post">
@@ -19,9 +19,11 @@
                 <img src="{{ post.image.url }}" class="post-img" alt="">
             </div>
             <div class="content">
-                <h1>{{ post.title }}</h1>
-                <p>{{ post.category.name }}</p>
-                <p>{{ post.anons }}</p>
+                <div class="left">
+                    <h1>{{ post.title }}</h1>
+                    <p>{{ post.category.name }}</p>
+                    <p>{{ post.anons }}</p>
+                </div>
                 <div class="right">
                     <p>{{ post.pub_date }}</p>
                     <p>by {{ post.author.username }}</p>
