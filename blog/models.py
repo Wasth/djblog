@@ -22,7 +22,10 @@ class Post(models.Model):
     text = models.TextField()
     image = models.ImageField(upload_to='blog')
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
-    tag = models.ManyToManyField(Tag, null=True)
+    tag = models.ManyToManyField(Tag, null=True, blank=True)
+    pub_date = models.DateTimeField(auto_now_add=True)
+    views = models.IntegerField(default=0)
+    author = models.ForeignKey(User, blank=True, on_delete=models.CASCADE, default=0)
 
     def __str__(self):
         return self.title
