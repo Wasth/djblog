@@ -5,7 +5,8 @@
     <title>{% block title %}Title{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
-    <link rel="stylesheet" href="{% static 'blog/style.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/select.css' %}">
 </head>
 <body>
 <div class="wrapper">
@@ -29,11 +30,14 @@
         </div>
         <div class="sidebar">
             {% block sidebar %}
-                sidebar
+                <section>
+                    <h2>Categories</h2>
+                    
+                </section>
             {% endblock %}
         </div>
     </div>
 </div>
-
+<script src="{% static 'blog/js/select.js' %}"></script>
 </body>
 </html>

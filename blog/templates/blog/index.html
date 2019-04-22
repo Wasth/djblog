@@ -11,7 +11,18 @@
 
 {% block content %}
     <div class="post-panel">
-        Sorting - Most Viewed
+        Sorting -
+        <div class="custom-select">
+            <select name="" id="">
+                <option value="100">Most Viewed</option>
+                <option value="1">By New 1</option>
+                <option value="2">By New 2</option>
+                <option value="3">By New 3</option>
+                <option value="4">By New 4</option>
+                <option value="5">By New 5</option>
+            </select>
+        </div>
+
     </div>
     {% for post in posts %}
         <div class="post">
