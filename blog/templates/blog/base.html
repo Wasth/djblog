@@ -18,7 +18,7 @@
                     <button>Sign Up</button>
                 </a>
 
-                <a href="/">
+                <a href="{% url 'signin' %}">
                     <button>Sign In</button>
                 </a>
             </div>
@@ -28,14 +28,15 @@
         <div class="content">
             {% block content %}Something wrong, if you se this.{% endblock %}
         </div>
-        <div class="sidebar">
+
             {% block sidebar %}
+                <div class="sidebar">
                 <section>
                     <h2>Categories</h2>
                     
                 </section>
+                </div>
             {% endblock %}
-        </div>
     </div>
 </div>
 <script src="{% static 'blog/js/select.js' %}"></script>

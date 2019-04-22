@@ -1,0 +1,27 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block page_name %}
+    djBlog - Sign In
+{% endblock %}
+
+{% block title %}
+    djBlog - Sign In
+{% endblock %}
+
+{% block sidebar %}{% endblock %}
+
+{% block content %}
+    <div class="auth">
+        <h2>Sign In!</h2>
+        <form action="{% url 'signin' %}">
+            {% csrf_token %}
+            <table>
+            {{ form.as_p }}
+            </table>
+
+            <button>Sign In!</button>
+        </form>
+
+    </div>
+{% endblock %}
