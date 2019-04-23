@@ -31,9 +31,11 @@
             </div>
             <div class="content">
                 <div class="left">
-                    <h1>{{ post.title }}</h1>
-                    <p>{{ post.category.name }}</p>
-                    <p>{{ post.anons }}</p>
+                    <a href="{% url 'detail' post.id %}">
+                        <h1>{{ post.title }}</h1>
+                        <p>{{ post.category.name }}</p>
+                        <p>{{ post.anons }}</p>
+                    </a>
                 </div>
                 <div class="right">
                     <p>{{ post.pub_date }}</p>
@@ -45,7 +47,7 @@
                             <span class="tag">#{{ tag.name }}</span>
                         {% endfor %}
                     </p>
-                    <p>32</p>
+                    <p>{{ post.views }}</p>
                 </div>
             </div>
         </div>

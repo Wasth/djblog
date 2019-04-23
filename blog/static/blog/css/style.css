@@ -130,6 +130,10 @@ textarea:focus {
     flex: 1;
     height: calc(100% - 30px);
 }
+.post .left a {
+    text-decoration: none;
+    color: #000;
+}
 .post .right {
     width: 176px;
     text-align: right;
@@ -167,4 +171,15 @@ textarea:focus {
     .auth {
         width: auto;
     }
+}
+
+.post-view {
+    background-color: #fff;
+    margin-top: 20px;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+.post-view img {
+    width: 100%;
 }

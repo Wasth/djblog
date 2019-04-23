@@ -1,0 +1,31 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block page_name %}
+    Popular posts
+{% endblock %}
+
+{% block title %}
+    {{ object.title }} - djBlog
+{% endblock %}
+
+{% block content %}
+    <div class="post-view">
+        <h1>{{ object.title }}</h1>
+        <p>{{ object.author.username }}</p>
+        <p>{{ object.category.name }}</p>
+        <p>
+            {% for tag in post.tag.all %}
+                <span class="tag">#{{ tag.name }}</span>
+            {% endfor %}
+        </p>
+        <p>{{ object.pub_date }}</p>
+        <h2>
+            {{ object.anons }}
+        </h2>
+        <p><img src="{{ post.image.url }}" class="post-img" alt=""></p>
+        <p>
+            {{ object.text }}
+        </p>
+    </div>
+{% endblock %}
