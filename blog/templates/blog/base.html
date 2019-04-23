@@ -29,14 +29,38 @@
             {% block content %}Something wrong, if you se this.{% endblock %}
         </div>
 
-            {% block sidebar %}
-                <div class="sidebar">
+        {% block sidebar %}
+            <div class="sidebar">
                 <section>
                     <h2>Categories</h2>
-                    
+                    <div>
+                        {% for c in ctx.categories %}
+                            <p>{{ c.name }}</p>
+                        {% empty %}
+                            <p>No categories yet..</p>
+                        {% endfor %}
+                    </div>
                 </section>
-                </div>
-            {% endblock %}
+                <section>
+                    <h2>Tags</h2>
+                    <div>
+                        {% for t in ctx.tags %}
+                            <p>{{ t.name }}</p>
+                        {% empty %}
+                            <p>No tags yet..</p>
+                        {% endfor %}
+                    </div>
+                </section>
+                <section>
+                    <h2>Popular</h2>
+                    <div>
+                        {% for b in ctx.popular_blogers %}
+                            {{ b.user.username }}
+                        {% endfor %}
+                    </div>
+                </section>
+            </div>
+        {% endblock %}
     </div>
 </div>
 <script src="{% static 'blog/js/select.js' %}"></script>

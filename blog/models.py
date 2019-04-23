@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.db.models import Sum
 
 
 class Category(models.Model):
@@ -44,3 +45,7 @@ class Profile(models.Model):
     avatar = models.ImageField(upload_to='blog/static/blog/images')
     bio = models.CharField(max_length=50)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    @property
+    def views(self):
+        return self.user.post_set.aggregate(total_views=Sum('views'))['total_views']
