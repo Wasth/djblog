@@ -7,7 +7,7 @@ from blog.models import Post, Category, Tag, Comment
 class PostAdmin(admin.ModelAdmin):
     fieldsets = [
         (None, {
-            'fields': ['title', 'anons', 'text', 'image']
+            'fields': ['author', 'title', 'anons', 'text', 'image']
         }),
         ('Categories and Tags', {
             'fields': ['category', 'tag']
