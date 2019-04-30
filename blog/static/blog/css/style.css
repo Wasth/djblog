@@ -220,3 +220,32 @@ textarea:focus {
 .post-view img {
     width: 100%;
 }
+
+.flash-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.flash-content {
+    color: #fff;
+    font-weight: lighter;
+    font-size: 40px;
+}
+.flash-note {
+    display: block;
+    font-size: 20px;
+    color: lightgray;
+    text-align: center;
+}
+.flash-popup.hide {
+    height: 0;
+    opacity: 0;
+    transition: .5s;
+}

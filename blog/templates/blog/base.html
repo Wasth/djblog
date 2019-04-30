@@ -24,7 +24,7 @@
                     <a href="#">
                         <button>New post</button>
                     </a>
-                    <a href="#">
+                    <a href="{% url 'logout' %}">
                         <button>Log out</button>
                     </a>
                 {% else %}
@@ -76,6 +76,24 @@
             </div>
         {% endblock %}
     </div>
+
+{% if messages %}
+    <div class="flash-popup">
+        <div class="flash-content">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+            <span class="flash-note">It will disappear automatically</span>
+        </div>
+        <script>
+            setTimeout(function () {
+                let flash = document.querySelector('.flash-popup');
+                flash.classList.add('hide');
+            }, 1000)
+        </script>
+    </div>
+
+{% endif %}
 </div>
 <script src="{% static 'blog/js/select.js' %}"></script>
 </body>

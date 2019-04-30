@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.contrib.auth import logout
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, FormView, DetailView
+from django.contrib import messages
 
 from blog.forms import SignInForm
 from blog.models import Post, Category, Tag, Profile
@@ -44,3 +46,10 @@ class SignIn(FormView):
     success_url = '/'
 
     # def from_valid(self, form):
+
+
+def log_out(request):
+    logout(request)
+    messages.add_message(request, messages.INFO, 'Successful log out')
+
+    return redirect('index')
