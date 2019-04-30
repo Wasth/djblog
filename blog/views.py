@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import ListView, FormView, DetailView
 from django.contrib import messages
 
-from blog.forms import SignInForm
+from blog.forms import SignInForm, SignUpForm
 from blog.models import Post, Category, Tag, Profile
 
 
@@ -45,7 +45,11 @@ class SignIn(FormView):
     form_class = SignInForm
     success_url = '/'
 
-    # def from_valid(self, form):
+
+class SignUp(FormView):
+    template_name = 'blog/signup.html'
+    form_class = SignUpForm
+    success_url = '/'
 
 
 def log_out(request):
