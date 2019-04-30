@@ -4,7 +4,7 @@ from django import forms
 class SignInForm(forms.Form):
     username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Your username'}), label=False)
     password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Your password'}), label=False)
-    remember_me = forms.BooleanField(label='Remember Me', label_suffix='')
+    remember_me = forms.BooleanField(label='Remember Me', label_suffix='', required=False)
 
 
 class SignUpForm(forms.Form):
