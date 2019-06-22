@@ -48,7 +48,7 @@
                 <section>
                     <h2>Categories</h2>
                     <div>
-                        {% for c in ctx.categories %}
+                        {% for c in categories %}
                             <p>{{ c.name }}</p>
                         {% empty %}
                             <p>No categories yet..</p>
@@ -58,7 +58,7 @@
                 <section>
                     <h2>Tags</h2>
                     <div>
-                        {% for t in ctx.tags %}
+                        {% for t in tags %}
                             <p>{{ t.name }}</p>
                         {% empty %}
                             <p>No tags yet..</p>
