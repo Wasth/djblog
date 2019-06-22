@@ -222,8 +222,7 @@ textarea:focus {
 .auth {
     background-color: #fff;
     width: 320px;
-    margin: 0 auto;
-    margin-top: 20px;
+    margin: 20px auto 0;
     border-radius: 5px;
     padding: 20px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
@@ -232,8 +231,14 @@ textarea:focus {
 
 .auth form p {
     padding: 10px 0;
+    text-align: left;
 }
-
+.auth form p .form-error {
+    display: inline-block;
+    margin-top: 5px;
+    color: crimson;
+    font-size: 14px;
+}
 @media (max-width: 400px) {
     .auth {
         width: auto;

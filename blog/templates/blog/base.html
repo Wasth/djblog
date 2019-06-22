@@ -16,7 +16,7 @@
             <div class="menu-block">
                 {% if user.is_authenticated %}
                     <a href="#">
-                        <button>Profile</button>
+                        <button>Profile({{ user.username }})</button>
                     </a>
                     <a href="#">
                         <button>My posts</button>
@@ -70,6 +70,8 @@
                     <div>
                         {% for b in ctx.popular_blogers %}
                             {{ b.user.username }}
+                        {% empty %}
+                            <p>No popular yet</p>
                         {% endfor %}
                     </div>
                 </section>
@@ -83,13 +85,13 @@
                 {% for message in messages %}
                     {{ message }}
                 {% endfor %}
-                <span class="flash-note">It will disappear automatically</span>
+                <span class="flash-note">It will disappear automatically in 3 seconds</span>
             </div>
             <script>
                 setTimeout(function () {
                     let flash = document.querySelector('.flash-popup');
                     flash.classList.add('hide');
-                }, 1000)
+                }, 3000)
             </script>
         </div>
 

@@ -1,4 +1,5 @@
 from django.contrib.auth import logout
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, FormView, DetailView
 from django.contrib import messages
@@ -50,6 +51,12 @@ class SignUp(FormView):
     template_name = 'blog/signup.html'
     form_class = SignUpForm
     success_url = '/'
+
+    def form_valid(self, form):
+        user = User.objects.create_user(form.cleaned_data['username'], form.cleaned_data['email'], form.cleaned_data['password'])
+        user.save()
+        messages.add_message(self.request, messages.INFO, 'Successful sign up!')
+        return super().form_valid(form)
 
 
 def log_out(request):
