@@ -1,0 +1,32 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block title %}
+    Create new post
+{% endblock %}
+
+{% block sidebar %}{% endblock %}
+
+{% block content %}
+    <div class="block newpost">
+        <h2>Create a new post</h2>
+        <form action="{% url 'newpost' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for field in form %}
+                <p>
+                    {% if field.label %} {{ field.label_tag }} <br> {% endif %}
+                    {{ field }}
+                    {% if field.errors %}
+                        {% for error in field.errors %}
+                            <span class="form-error">{{ error|escape }}</span>
+                        {% endfor %}
+                    {% endif %}
+                    </span>
+                </p>
+            {% endfor %}
+
+            <button>Create post!</button>
+        </form>
+
+    </div>
+{% endblock %}

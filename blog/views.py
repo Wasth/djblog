@@ -1,28 +1,16 @@
 from django.contrib.auth import logout, authenticate, login
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.views.generic import ListView, FormView, DetailView
 from django.contrib import messages
 
-from blog.forms import SignInForm, SignUpForm
-from blog.models import Post, Category, Tag, Profile
+from blog.forms import SignInForm, SignUpForm, CreatePostForm
+from blog.models import Post
 from djblog.settings import SESSION_COOKIE_AGE
 
 
-class SidebarContext:
-    extra_context = {}
-
-    def get_context_data(self, **kwargs):
-        context = super(SidebarContext, self).get_context_data(**kwargs)
-        context['ctx'] = {
-            'categories': Category.objects.all(),
-            'tags': Tag.objects.all(),
-            'popular_blogers': Profile.objects.all()
-        }
-        return context
-
-
-class PostList(ListView, SidebarContext):
+class PostList(ListView):
     model = Post
     paginate_by = 5
     ordering = ['-pub_date']
@@ -37,7 +25,18 @@ class PostList(ListView, SidebarContext):
         return Post.objects.all()
 
 
-class PostDetail(DetailView, SidebarContext):
+class MyPostList(ListView):
+    model = Post
+    paginate_by = 5
+    ordering = ['-pub_date']
+    template_name = 'blog/index.html'
+    context_object_name = 'posts'
+
+    def get_queryset(self):
+        return Post.objects.filter(author=self.request.user.id).all()
+
+
+class PostDetail(DetailView):
     model = Post
     template_name = 'blog/detail.html'
 
@@ -50,7 +49,6 @@ class SignIn(FormView):
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
         if form.is_valid():
-            print(form.cleaned_data)
             user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password'])
             if user is None:
                 messages.add_message(request, messages.INFO, 'Incorrect login or password')
@@ -73,10 +71,25 @@ class SignUp(FormView):
     success_url = '/'
 
     def form_valid(self, form):
-        user = User.objects.create_user(form.cleaned_data['username'], form.cleaned_data['email'], form.cleaned_data['password'])
+        user = User.objects.create_user(form.cleaned_data['username'],
+                                        form.cleaned_data['email'],
+                                        form.cleaned_data['password'])
         user.save()
         messages.add_message(self.request, messages.INFO, 'Successful sign up!')
         return super().form_valid(form)
+
+
+class CreatePost(FormView):
+    template_name = 'blog/newpost.html'
+    form_class = CreatePostForm
+
+    def form_valid(self, form):
+        post = form.save(commit=False)
+        post.author_id = self.request.user.id
+        post.save()
+        post.tag.set(form.cleaned_data['tag'])
+        post.save()
+        return redirect(reverse('myposts'))
 
 
 def log_out(request):
