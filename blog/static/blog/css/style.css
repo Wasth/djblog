@@ -18,14 +18,17 @@
 
 button {
     padding: 10px;
-    border: 1px solid gray;
+    border: 1px solid #bbbaba;
     background: #fff;
     color: #000000;
     font-size: 1rem;
     border-radius: 5px;
     cursor: pointer;
+    transition: .3s;
 }
-
+button.b0 {
+    border: 0;
+}
 button:hover {
     background-color: #5b3963;
     color: #fff;
@@ -91,7 +94,7 @@ select {
     background: linear-gradient(to right, #42275a, #734b6d);
     z-index: 1;
     min-height: calc(100vh - 73px);
-    padding-top: 73px;
+    padding-top: 98px;
 }
 
 .wrapper .container {
@@ -116,6 +119,8 @@ select {
 .header .container {
     display: flex;
     justify-content: space-between;
+    -ms-align-items: center;
+    align-items: center;
 }
 
 /*.header button {*/
@@ -129,7 +134,13 @@ select {
 .logo-block a {
     color: #000;
 }
-
+.logo-block h1 {
+    padding: 15px;
+    padding-top: 10px;
+    border-radius: 5px;
+    background: linear-gradient(to right, #42275a, #734b6d);
+    color: white;
+}
 /*.header button:hover {*/
 /*    background: linear-gradient(to right, #42275a, #734b6d);*/
 /*    color: #fff;*/
@@ -139,7 +150,9 @@ select {
 .header a {
     text-decoration: none;
 }
-
+.menu-block button{
+    margin-left: 20px;
+}
 .post-panel {
     background-color: #fff;
     border-radius: 5px;

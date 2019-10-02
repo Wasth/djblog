@@ -12,27 +12,27 @@
 <div class="wrapper">
     <div class="header">
         <div class="container">
-            <div class="logo-block"><a href="/"><h1>djBlog</h1></a></div>
+            <div class="logo-block"><a href="/"><h1>TRRio</h1></a></div>
             <div class="menu-block">
                 {% if user.is_authenticated %}
                     <a href="#">
-                        <button>Profile({{ user.username }})</button>
+                        <button class='b0'>Profile({{ user.username }})</button>
                     </a>
                     <a href="{% url 'myposts' %}">
-                        <button>My posts</button>
+                        <button class='b0'>My posts</button>
                     </a>
                     <a href="{% url 'newpost' %}">
-                        <button>New post</button>
+                        <button class='b0'>Create post</button>
                     </a>
                     <a href="{% url 'logout' %}">
-                        <button>Log out</button>
+                        <button class='b0'>Log out</button>
                     </a>
                 {% else %}
                     <a href="{% url 'signup' %}">
-                        <button>Sign Up</button>
+                        <button class='b0'>Sign Up</button>
                     </a>
                     <a href="{% url 'signin' %}">
-                        <button>Sign In</button>
+                        <button class='b0'>Sign In</button>
                     </a>
                 {% endif %}
             </div>
