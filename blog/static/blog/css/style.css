@@ -56,7 +56,6 @@ textarea {
 input[type=text]:focus,
 input[type=password]:focus,
 input[type=email]:focus,
-a:focus,
 textarea:focus {
     outline: 0;
     box-shadow: 0 0 0 3px rgba(80, 51, 88, 0.6);
@@ -115,7 +114,27 @@ select {
     width: 300px;
     margin-left: 20px;
 }
-
+.sidebar .tag {
+    background-color: #fff;
+    border: 1px solid lightgray;
+    margin-top: 5px;
+}
+.sidebar .tag.selected {
+    background-color: #503358;
+    border-color: #503358;
+}
+.sidebar .tag a {
+    color: black;
+    text-decoration: none;
+}
+.sidebar .tag.selected a {
+    color: white;
+}
+.sidebar .tag.selected a::after {
+    display: inline-block;
+    content: '\274C';
+    font-size: 10px;
+}
 .header .container {
     display: flex;
     justify-content: space-between;

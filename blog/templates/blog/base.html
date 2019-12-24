@@ -60,13 +60,13 @@
                     <div>
                         {% for t in tags %}
                             {% if t.name in request.GET.t %}
-                                <p>
+                                <p class='tag selected'>
                                     <a href="{% url 'del_tag' t.name %}">
-                                        {{ t.name }} - X
+                                        {{ t.name }}
                                     </a>
                                 </p>
                             {% else %}
-                                <p>
+                                <p class='tag'>
                                     <a href="{% url 'add_tag' t.name %}">
                                         {{ t.name }}
                                     </a>
