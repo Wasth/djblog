@@ -49,7 +49,7 @@
                     <h2>Categories</h2>
                     <div>
                         {% for c in categories %}
-                            <p>{{ c.name }}</p>
+                            <p><a href="">{{ c.name }}</a></p>
                         {% empty %}
                             <p>No categories yet..</p>
                         {% endfor %}
@@ -59,7 +59,7 @@
                     <h2>Tags</h2>
                     <div>
                         {% for t in tags %}
-                            <p>{{ t.name }}</p>
+                            <p><a href="{% url 'add_tag' t.name %}">{{ t.name }}</a></p>
                         {% empty %}
                             <p>No tags yet..</p>
                         {% endfor %}

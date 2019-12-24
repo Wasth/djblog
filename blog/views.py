@@ -4,33 +4,69 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views.generic import ListView, FormView, DetailView
 from django.contrib import messages
-
 from blog.forms import SignInForm, SignUpForm, CreatePostForm
-from blog.models import Post
+from blog.models import Post, Tag
+from django.http.request import QueryDict
 from djblog.settings import SESSION_COOKIE_AGE
+
+
+def get_refferer_urlparams(request):
+    prev_params = request.META.get('HTTP_REFERER', '')
+    if '?' in prev_params:
+        prev_params = prev_params.split('?')[1]
+    else:
+        prev_params = ''
+    query_dict = QueryDict(prev_params, mutable=True)
+    return query_dict
+
+
+def del_tag(request, tag):
+    urlparams = get_refferer_urlparams(request)
+    tags = urlparams.get('t', '').split('|')
+    tags.pop(tag)
+    if tags:
+        urlparams['t'] = '|'.join(tags)
+    else:
+        urlparams.pop('t', None)
+    return redirect('/?' + urlparams.urlencode())
+
+
+def add_tag(request, tag):
+    urlparams = get_refferer_urlparams(request)
+    tags = []
+    if 't' in urlparams:
+        tags = urlparams.get('t', '').split('|')
+    if tag not in tags and tag in [c.name for c in Tag.objects.all()]:
+        tags.append(tag)
+    urlparams['t'] = '|'.join(tags)
+    return redirect('/?' + urlparams.urlencode())
+
+
+def set_category(request, category=None):
+    pass
+
+
+def set_author(request, author=None):
+    pass
+
+
+def set_sorting(request, sort=None):
+    pass
 
 
 class PostList(ListView):
     model = Post
-    paginate_by = 5
+    paginate_by = 7
     ordering = ['-pub_date']
     template_name = 'blog/index.html'
     context_object_name = 'posts'
 
     def get_queryset(self):
-        category = self.request.GET.get('c')
-        sorting = self.request.GET.get('s')
-        print('Category - ' + str(category))
-        print('Sorting - ' + str(sorting))
-        return Post.objects.all()
+        print(self.request.GET.get('t', '').split('|'))
+        return Post.objects.order_by('-pub_date')
 
 
-class MyPostList(ListView):
-    model = Post
-    paginate_by = 5
-    ordering = ['-pub_date']
-    template_name = 'blog/index.html'
-    context_object_name = 'posts'
+class MyPostList(PostList):
 
     def get_queryset(self):
         return Post.objects.filter(author=self.request.user.id).all()
