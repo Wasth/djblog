@@ -1,7 +1,10 @@
 *, *:after, *:before {
     padding: 0;
     margin: 0;
+}
+body {
     font-family: "Segoe UI", sans-serif;
+    color: #333333;
 }
 
 .container {
@@ -20,7 +23,7 @@ button {
     padding: 10px;
     border: 1px solid #bbbaba;
     background: #fff;
-    color: #000000;
+    color: #333333;
     font-size: 1rem;
     border-radius: 5px;
     cursor: pointer;
@@ -114,6 +117,16 @@ select {
     width: 300px;
     margin-left: 20px;
 }
+.sidebar .category:before {
+    display: inline-block;
+    content: '\25B6';
+    margin-right: 5px;
+    color: #503358;
+}
+.sidebar .category a {
+    text-decoration: none;
+    color: #333333;
+}
 .sidebar .tag {
     background-color: #fff;
     border: 1px solid lightgray;
@@ -124,7 +137,7 @@ select {
     border-color: #503358;
 }
 .sidebar .tag a {
-    color: black;
+    color: #333333;
     text-decoration: none;
 }
 .sidebar .tag.selected a {
@@ -151,7 +164,7 @@ select {
 /*    font-size: 1rem;*/
 /*}*/
 .logo-block a {
-    color: #000;
+    color: #333333;
 }
 .logo-block h1 {
     padding: 15px;
@@ -225,11 +238,11 @@ select {
 
 .post .left a {
     text-decoration: none;
-    color: #000;
+    color: #333333;
 }
 
 .post .right {
-    width: 176px;
+    width: 205px;
     text-align: right;
     color: gray;
 }
@@ -242,12 +255,12 @@ select {
 
 
 .tag {
-    padding: 5px;
     display: inline-block;
     border-radius: 5px;
     background-color: #503358;
     color: #fff;
-
+    padding: 5px 10px;
+    padding-top: 3px;
 }
 
 .pagination {
