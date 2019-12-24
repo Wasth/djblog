@@ -22,8 +22,11 @@ def get_refferer_urlparams(request):
 
 def del_tag(request, tag):
     urlparams = get_refferer_urlparams(request)
-    tags = urlparams.get('t', '').split('|')
-    tags.pop(tag)
+    tags = []
+    if 't' in urlparams:
+        tags = urlparams.get('t', '').split('|')
+        tags.remove(tag)
+
     if tags:
         urlparams['t'] = '|'.join(tags)
     else:

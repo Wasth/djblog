@@ -59,7 +59,19 @@
                     <h2>Tags</h2>
                     <div>
                         {% for t in tags %}
-                            <p><a href="{% url 'add_tag' t.name %}">{{ t.name }}</a></p>
+                            {% if t.name in request.GET.t %}
+                                <p>
+                                    <a href="{% url 'del_tag' t.name %}">
+                                        {{ t.name }} - X
+                                    </a>
+                                </p>
+                            {% else %}
+                                <p>
+                                    <a href="{% url 'add_tag' t.name %}">
+                                        {{ t.name }}
+                                    </a>
+                                </p>
+                            {% endif %}
                         {% empty %}
                             <p>No tags yet..</p>
                         {% endfor %}
