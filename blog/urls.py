@@ -1,7 +1,7 @@
 from django.urls import path
 
 from blog.views import PostList, SignIn, PostDetail, log_out, SignUp, MyPostList, CreatePost
-from blog.views import add_tag, del_tag
+from blog.views import add_tag, del_tag, set_category, del_category
 
 urlpatterns = [
     path('', PostList.as_view(), name='index'),
@@ -15,5 +15,8 @@ urlpatterns = [
     path('logout/', log_out, name='logout'),
 
     path('at/<tag>', add_tag, name='add_tag'),
-    path('dt/<tag>', del_tag, name='del_tag')
+    path('dt/<tag>', del_tag, name='del_tag'),
+
+    path('ac/<category>', set_category, name='set_cat'),
+    path('dc/<category>', del_category, name='del_cat'),
 ]

@@ -45,12 +45,17 @@ def add_tag(request, tag):
     return redirect('/?' + urlparams.urlencode())
 
 
-def set_category(request, category=None):
-    pass
+def set_category(request, category):
+    urlparams = get_refferer_urlparams(request)
+    urlparams.pop('c', '')
+    urlparams.update(c=category)
+    return redirect('/?' + urlparams.urlencode())
 
 
-def set_author(request, author=None):
-    pass
+def del_category(request, category):
+    urlparams = get_refferer_urlparams(request)
+    urlparams.pop('c', '')
+    return redirect('/?' + urlparams.urlencode())
 
 
 def set_sorting(request, sort=None):
@@ -87,6 +92,7 @@ class SignIn(FormView):
 
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
+        print('got form')
         if form.is_valid():
             user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password'])
             if user is None:

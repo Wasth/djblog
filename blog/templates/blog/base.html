@@ -50,7 +50,11 @@
                     <h2>Categories</h2>
                     <div>
                         {% for c in categories %}
-                            <p class='category'><a href="">{{ c.name }}</a></p>
+                            {% if c.name == request.GET.c %}
+                                <p class='selected category'><a href="{% url 'del_cat' c.name %}">{{ c.name }}</a></p>
+                            {% else %}
+                                <p class='category'><a href="{% url 'set_cat' c.name %}">{{ c.name }}</a></p>
+                            {% endif %}
                         {% empty %}
                             <p>No categories yet..</p>
                         {% endfor %}
@@ -79,14 +83,14 @@
                     </div>
                 </section>
                 <section>
-                    <h2>Popular</h2>
+                    <!-- <h2>Popular</h2>
                     <div>
                         {% for b in ctx.popular_blogers %}
                             {{ b.user.username }}
                         {% empty %}
                             <p>No popular yet</p>
                         {% endfor %}
-                    </div>
+                    </div> -->
                 </section>
             </div>
         {% endblock %}
