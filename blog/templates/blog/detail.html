@@ -8,18 +8,24 @@
 {% block content %}
     <div class="post-view block">
         <h1>{{ object.title }}</h1>
-        <p>{{ object.author.username }}</p>
-        <p>{{ object.category.name }}</p>
-        <p>
-            {% for tag in post.tag.all %}
-                <span class="tag">#{{ tag.name }}</span>
-            {% endfor %}
-        </p>
-        <p>{{ object.pub_date }}</p>
-        <h2>
-            {{ object.anons }}
-        </h2>
-        <p><img src="{{ post.image.url }}" class="post-img" alt=""></p>
+        <div class='df'>
+            <p><img src="{{ post.image.url }}" class="post-img" alt=""></p>
+            <div>
+                <p>{{ object.category.name }}</p>
+                <h4>
+                    {{ object.anons }}
+                </h4>
+                <p><i class="fas fa-clock"></i> {{ object.pub_date|date:"F j, Y, H:m" }}</p>    
+                <p><i class="fas fa-user-edit"></i> {{ object.author.username }}</p> 
+                <p>
+                    {% for tag in post.tag.all %}
+                        <span class="tag">#{{ tag.name }}</span>
+                    {% endfor %}
+                </p>
+
+            </div>
+            
+        </div>
         <p>
             {{ object.text }}
         </p>

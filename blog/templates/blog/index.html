@@ -6,17 +6,17 @@
 {% endblock %}
 
 {% block content %}
-    <div class="post-panel">
+    <!-- <div class="post-panel">
         <form action="">
             <div class="custom-select">
                 <select name="s" id="">
-                    <option selected="true" value="1">What first?</option>
+                    <option value="1">What first?</option>
+                    <option selected="" value="new">By new</option>
                     <option value="views">Most viewed</option>
-                    <option value="new">By new</option>
                 </select>
             </div>
         </form>
-    </div>
+    </div> -->
     {% for post in posts %}
         <article class="post">
             <header>
@@ -34,14 +34,15 @@
                         <h1>{{ post.title }}</h1>
                         <p>{{ post.anons }}</p>
                     </a>
+                    <p>
+                        {% for tag in post.tag.all %}
+                            <span class="tag">#{{ tag.name }}</span>
+                        {% endfor %}
+                    </p>
                 </div>
             </div>
             <footer>
-                <p>
-                    {% for tag in post.tag.all %}
-                        <span class="tag">#{{ tag.name }}</span>
-                    {% endfor %}
-                </p>
+                
             </footer>
         </article>
     {% empty %}

@@ -20,7 +20,16 @@ body {
     margin: 0 auto;
     padding: 0 20px;
 }
-
+.df {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+}
+.jcsb {
+    justify-content: space-between;
+}
 .line {
     background: linear-gradient(to right, #42275a, #734b6d);
     width: 100%;
@@ -267,6 +276,8 @@ select {
     color: #fff;
     padding: 5px 10px;
     padding-top: 3px;
+    margin-top: 10px;
+    font-size: 12px;
 }
 
 .pagination {
@@ -310,8 +321,15 @@ form p .form-error {
 
 .post-view img {
     width: 100%;
+    max-width: 400px;
+    border-radius: 5px;
 }
-
+.post-view .df div{
+    margin-left: 20px;
+}
+.post-view h1 {
+    margin-bottom: 20px;
+}
 .flash-popup {
     position: fixed;
     top: 0;
