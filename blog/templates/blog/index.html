@@ -36,7 +36,7 @@
                     </a>
                     <p>
                         {% for tag in post.tag.all %}
-                            <span class="tag">#{{ tag.name }}</span>
+                            <span class="tag">{{ tag.name }}</span>
                         {% endfor %}
                     </p>
                 </div>

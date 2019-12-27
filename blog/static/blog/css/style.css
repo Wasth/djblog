@@ -31,7 +31,7 @@ body {
     justify-content: space-between;
 }
 .line {
-    background: linear-gradient(to right, #42275a, #734b6d);
+    background: linear-gradient(to right, #9f2959, #351367);
     width: 100%;
     height: 3px;
 }
@@ -50,9 +50,9 @@ button.b0 {
     border: 0;
 }
 button:hover {
-    background-color: #5b3963;
+    background-color: #441665;
     color: #fff;
-    border-color: #5b3963;
+    border-color: #441665;
 }
 
 button:focus {
@@ -110,7 +110,8 @@ select {
 }
 
 .wrapper {
-    background: linear-gradient(to right, #42275a, #734b6d);
+    /*background: linear-gradient(to right, #42275a, #734b6d);*/
+    background: linear-gradient(to right, #9f2959, #351367);
     z-index: 1;
     min-height: calc(100vh - 118px);
     padding-top: 98px;
@@ -149,7 +150,7 @@ select {
     color: white;
 }
 .sidebar .category.selected {
-    background-color: #503358;
+    background-color: #441665;
     padding: 5px;
     border-radius: 5px;
 }
@@ -162,8 +163,8 @@ select {
     margin-top: 5px;
 }
 .sidebar .tag.selected {
-    background-color: #503358;
-    border-color: #503358;
+    background-color: #441665;
+    border-color: #441665;
 }
 .sidebar .tag a {
     color: #333333;
@@ -199,7 +200,7 @@ select {
     padding: 15px;
     padding-top: 10px;
     border-radius: 5px;
-    background: linear-gradient(to right, #42275a, #734b6d);
+    background: linear-gradient(to right, #9f2959, #351367);
     color: white;
     font-size: 24px;
 }
@@ -272,7 +273,7 @@ select {
 .tag {
     display: inline-block;
     border-radius: 5px;
-    background-color: #503358;
+    background-color: #74205f;;
     color: #fff;
     padding: 5px 10px;
     padding-top: 3px;
