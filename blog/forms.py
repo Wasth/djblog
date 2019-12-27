@@ -1,5 +1,5 @@
 from django import forms
-
+from django_summernote.widgets import SummernoteWidget
 from blog.models import Post
 
 
@@ -16,7 +16,8 @@ class CreatePostForm(forms.ModelForm):
         widgets = {
             'title': forms.TextInput(attrs={'placeholder': 'Title'}),
             'anons': forms.TextInput(attrs={'placeholder': 'Short text of post(anons)'}),
-            'text': forms.Textarea(attrs={'placeholder': 'Text of post'}),
+            'text': SummernoteWidget(),
+            # 'text': forms.Textarea(attrs={'placeholder': 'Text of post'}),
 
         }
         labels = {

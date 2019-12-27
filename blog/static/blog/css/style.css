@@ -331,6 +331,10 @@ form p .form-error {
 .post-view h1 {
     margin-bottom: 20px;
 }
+.post-view div ul,
+.post-view div ol {
+    margin-left: 20px;
+}
 .flash-popup {
     position: fixed;
     top: 0;

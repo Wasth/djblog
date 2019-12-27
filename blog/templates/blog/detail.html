@@ -26,8 +26,8 @@
             </div>
             
         </div>
-        <p>
-            {{ object.text }}
-        </p>
+        <div>
+            {{ object.text|safe }}
+        </div>
     </div>
 {% endblock %}
