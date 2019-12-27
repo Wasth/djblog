@@ -5,7 +5,7 @@ from django.urls import reverse
 from django.views.generic import ListView, FormView, DetailView
 from django.contrib import messages
 from blog.forms import SignInForm, SignUpForm, CreatePostForm
-from blog.models import Post, Tag
+from blog.models import Post, Tag, Category
 from django.http.request import QueryDict
 from djblog.settings import SESSION_COOKIE_AGE
 
@@ -70,8 +70,14 @@ class PostList(ListView):
     context_object_name = 'posts'
 
     def get_queryset(self):
-        print(self.request.GET.get('t', '').split('|'))
-        return Post.objects.order_by('-pub_date')
+        posts = Post.objects.order_by('-pub_date')
+
+        category = self.request.GET.get('c', '')
+        if category:
+            category_obj = Category.objects.get(name=category)
+            posts = posts.filter(category=category_obj)
+
+        return posts
 
 
 class MyPostList(PostList):
