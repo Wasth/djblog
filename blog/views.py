@@ -77,6 +77,18 @@ class PostList(ListView):
             category_obj = Category.objects.get(name=category)
             posts = posts.filter(category=category_obj)
 
+        tags = []
+        if 't' in self.request.GET:
+            tags = self.request.GET['t'].split('|')
+            tmp = []
+            for post in posts:
+                hasAllTags = True
+                for tag in tags:
+                    if tag not in (t.name for t in post.tag.all()):
+                        hasAllTags = False
+                if hasAllTags:
+                    tmp.append(post)
+            posts = tmp
         return posts
 
 
