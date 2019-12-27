@@ -2,12 +2,14 @@ from django.contrib.auth import logout, authenticate, login
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.views.generic import ListView, FormView, DetailView
+from django.views.generic import ListView, FormView, DetailView, UpdateView
 from django.contrib import messages
 from blog.forms import SignInForm, SignUpForm, CreatePostForm
 from blog.models import Post, Tag, Category
 from django.http.request import QueryDict
 from djblog.settings import SESSION_COOKIE_AGE
+from django import forms
+from django_summernote.widgets import SummernoteWidget
 
 
 def get_refferer_urlparams(request):
@@ -153,6 +155,32 @@ class CreatePost(FormView):
         post.tag.set(form.cleaned_data['tag'])
         post.save()
         return redirect(reverse('myposts'))
+
+
+class EditPost(FormView):
+    template_name = 'blog/newpost.html'
+    form_class = CreatePostForm
+
+    def get_context_data(self, **kwargs):
+        """Insert the form into the context dict."""
+        kwargs['page_title'] = 'Редактировать пость'
+        return super().get_context_data(**kwargs)
+
+    def get_form(self, form_class=None):
+        post = Post.objects.get(pk=self.kwargs['pk'])
+        form = CreatePostForm(instance=post)
+        print(form.instance.image)
+        return form
+
+    def post(self, request, *args, **kwargs):
+        post = Post.objects.get(pk=kwargs['pk'])
+        post.image = request.FILES['image']
+        form = CreatePostForm(request.POST, instance=post)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('detail', args=[kwargs['pk']]))
+
+        return super().post(request)
 
 
 def log_out(request):

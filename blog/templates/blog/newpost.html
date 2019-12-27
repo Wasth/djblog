@@ -2,15 +2,25 @@
 {% load static %}
 
 {% block title %}
-    Create new post
+    {% if page_title %}
+        {{page_title}}
+    {% else %}
+        Create new post
+    {% endif %}
 {% endblock %}
 
 {% block sidebar %}{% endblock %}
 
 {% block content %}
     <div class="block newpost">
-        <h2>Create a new post</h2>
-        <form action="{% url 'newpost' %}" method="post" enctype="multipart/form-data">
+        <h2>
+            {% if page_title %}
+                {{page_title}}
+            {% else %}
+                Create new post
+            {% endif %}
+        </h2>
+        <form action="" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {% for field in form %}
                 <p>
@@ -25,7 +35,7 @@
                 </p>
             {% endfor %}
 
-            <button>Create post!</button>
+            <button>Save post!</button>
         </form>
 
     </div>

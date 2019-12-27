@@ -43,7 +43,7 @@
             </div>
             {% if post.author == user%}
             <footer>
-                <a href="">
+                <a href="{% url 'edit' post.id %}">
                     <i class="fas fa-pen"></i> Редачить
                 </a>
             </footer>
