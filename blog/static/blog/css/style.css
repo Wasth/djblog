@@ -6,6 +6,9 @@ body {
     font-family: "Segoe UI", sans-serif;
     color: #333333;
 }
+body#dark-body.dark-theme {
+    color: #bdbdbd;
+}
 .clear {
     clear: both;
 }
@@ -46,6 +49,11 @@ button {
     cursor: pointer;
     transition: .3s;
 }
+body#dark-body.dark-theme button {
+    border-color:#bbbaba;
+    background: #232323;
+    color: #d4d4d4;
+}
 button.b0 {
     border: 0;
 }
@@ -54,7 +62,6 @@ button:hover {
     color: #fff;
     border-color: #441665;
 }
-
 button:focus {
     outline: 0;
     box-shadow: 0 0 0 3px rgba(80, 51, 88, 0.6);
@@ -72,7 +79,13 @@ textarea {
     width: calc(100% - 20px - 2px);
     font-size: 16px;
 }
-
+body#dark-body.dark-theme input[type=text],
+body#dark-body.dark-theme input[type=password],
+body#dark-body.dark-theme input[type=email],
+body#dark-body.dark-theme textarea{
+    background: #232323;
+    color: #d4d4d4;
+}
 input[type=text]:focus,
 input[type=password]:focus,
 input[type=email]:focus,
@@ -87,6 +100,10 @@ textarea:focus {
     border-radius: 5px;
     padding: 20px;
     box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
+}
+body#dark-body.dark-theme .block {
+    background: #232323;
+    color: #d4d4d4;
 }
 form p {
     padding: 10px 0;
@@ -108,6 +125,9 @@ select {
     width: 100%;
     /*margin-bottom: 20px;*/
 }
+body#dark-body.dark-theme .header {
+    background: #232323;
+}
 
 .wrapper {
     /*background: linear-gradient(to right, #42275a, #734b6d);*/
@@ -126,7 +146,9 @@ select {
 .wrapper .content {
     flex: 1;
 }
-
+body#dark-body.dark-theme .sidebar {
+    background: #232323;
+}
 .sidebar {
     background-color: #fff;
     box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
@@ -141,6 +163,10 @@ select {
     content: '\25B6';
     margin-right: 5px;
     color: #503358;
+}
+
+body#dark-body.dark-theme .sidebar .category a {
+    color: #d4d4d4;
 }
 .sidebar .category a {
     text-decoration: none;
@@ -157,14 +183,24 @@ select {
 .sidebar .category.selected a {
     color: white;
 }
+body#dark-body.dark-theme .sidebar .tag {
+    background-color: #232323;
+}
 .sidebar .tag {
     background-color: #fff;
     border: 1px solid lightgray;
     margin-top: 5px;
 }
+body#dark-body.dark-theme .sidebar .tag.selected {
+    background-color: #441665;
+    border-color: #441665;
+}
 .sidebar .tag.selected {
     background-color: #441665;
     border-color: #441665;
+}
+body#dark-body.dark-theme .sidebar .tag a {
+    color: #d4d4d4;
 }
 .sidebar .tag a {
     color: #333333;
@@ -196,6 +232,11 @@ select {
 .logo-block a {
     color: #333333;
 }
+
+body#dark-body.dark-theme .logo-block h1 { 
+    color: #d4d4d4;
+}
+
 .logo-block h1 {
     padding: 15px;
     padding-top: 10px;
@@ -223,7 +264,9 @@ select {
     padding: 20px;
     box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
 }
-
+body#dark-body.dark-theme .post {
+    background-color: #232323;
+}
 .post {
     background-color: #fff;
     box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
@@ -238,8 +281,9 @@ select {
     justify-content: space-between;
     margin-bottom: 20px;
 }
-.post footer {
-    margin-top: 20px;
+.post footer a {
+    margin-top: 10px;
+    float: right;
 }
 .post > div {
     display: flex;
@@ -252,6 +296,9 @@ select {
     align-items: center;
     float: left;
 }
+body#dark-body.dark-theme .post a {
+    color: #d4d4d4;
+}
 .post a {
     text-decoration: none;
     color: #333333;
@@ -263,7 +310,7 @@ select {
 .post .img img {
     width: 100%;
     border-radius: 5px;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
 }
 
 .post .content {
@@ -319,7 +366,9 @@ form p .form-error {
 .post-view {
     margin-top: 20px;
 }
-
+body#dark-body.dark-theme .post-view a {
+    color: #d4d4d4;
+}
 .post-view img {
     width: 100%;
     max-width: 400px;
