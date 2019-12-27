@@ -41,9 +41,13 @@
                     </p>
                 </div>
             </div>
+            {% if post.author == user%}
             <footer>
-                
+                <a href="">
+                    <i class="fas fa-pen"></i> Редачить
+                </a>
             </footer>
+            {% endif %}
         </article>
     {% empty %}
         <h3 class="post">Nothing has been posted yet</h3>
