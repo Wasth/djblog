@@ -130,3 +130,10 @@ LOGOUT_REDIRECT_URL = '/'
 
 # Time for auto-login period in seconds
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 30
+
+# SummerNote config
+SUMMERNOTE_CONFIG = {
+    'summernote': {
+        'width': '100%'
+    }
+}

@@ -64,7 +64,7 @@ def set_sorting(request, sort=None):
 
 class PostList(ListView):
     model = Post
-    paginate_by = 7
+    paginate_by = 10
     ordering = ['-pub_date']
     template_name = 'blog/index.html'
     context_object_name = 'posts'
