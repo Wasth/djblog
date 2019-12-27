@@ -2,6 +2,7 @@
 .idea/
 
 ### Django ###
+media/*
 *.log
 *.pot
 *.pyc
