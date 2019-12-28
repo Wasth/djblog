@@ -50,12 +50,16 @@ button {
     transition: .3s;
 }
 body#dark-body.dark-theme button {
-    border-color:#bbbaba;
+    border-color: #353535;
     background: #232323;
     color: #d4d4d4;
 }
 button.b0 {
     border: 0;
+}
+body#dark-body.dark-theme button:hover {
+    background-color: #691e60;
+    border-color: #691e60;
 }
 button:hover {
     background-color: #441665;
@@ -79,16 +83,26 @@ textarea {
     width: calc(100% - 20px - 2px);
     font-size: 16px;
 }
+input[type=file] {
+    border: 1px solid lightgray;
+    padding: 10px;
+    border-radius: 5px;
+}
+body#dark-body.dark-theme input[type=file] {
+    border-color: #353535;
+}
 body#dark-body.dark-theme input[type=text],
 body#dark-body.dark-theme input[type=password],
 body#dark-body.dark-theme input[type=email],
 body#dark-body.dark-theme textarea{
     background: #232323;
     color: #d4d4d4;
+    border-color: #353535;
 }
 input[type=text]:focus,
 input[type=password]:focus,
 input[type=email]:focus,
+select:focus,
 textarea:focus {
     outline: 0;
     box-shadow: 0 0 0 3px rgba(80, 51, 88, 0.6);
@@ -113,6 +127,11 @@ select {
     font-size: 16px;
     border-radius: 5px;
 }
+body#dark-body.dark-theme select {
+    background: #232323;
+    color: #d4d4d4;
+    border-color: #353535;
+}
 /*#*/
 .header {
     padding: 15px 0;
@@ -134,7 +153,7 @@ body#dark-body.dark-theme .header {
     background: linear-gradient(to right, #9f2959, #351367);
     z-index: 1;
     min-height: calc(100vh - 118px);
-    padding-top: 98px;
+    padding-top: 87px;
     padding-bottom: 20px;
 }
 
@@ -142,9 +161,58 @@ body#dark-body.dark-theme .header {
     display: flex;
     align-items: flex-start;
 }
+@media (max-width: 1024px) {
+    .wrapper > .container {
+        flex-direction: column;
+    }
+    .container .sidebar {
+        position: fixed;
+        left: calc(100vw - 20px);
+        transition: left .2s;
+        top: 150px;
+        width: calc(100vw - 80px);
+        z-index: 4;
+        border-top-left-radius: 0px;
+    }
+    .sidebar:hover {
+        left: 0px;
+    }
+    .sidebar:hover + .shadow {
+        display: block;
+        content: '';
+        position: fixed;
+        z-index: 3;
+        top: 0;
+        left: 0;
+        background-color: rgba(0,0,0,0.78);
+        width: 100vw;
+        height: 100vh;
+    }
+    .sidebar:hover:before {
+        /*display: none;*/
+    }
+    .sidebar:before {
+        display: block;
+        content: "\f104";
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        left: -50px;
+        border-bottom-left-radius: 10px;
+        border-top-left-radius: 10px;
+        top: 0;
+        background-color: #74205f;
+        font-size: 46px;
+        font-family: "Font Awesome 5 Pro";
+        font-weight: 900;
+        text-align: center;
+        box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
+    }
+}
 
 .wrapper .content {
     flex: 1;
+    width: 100%;
 }
 body#dark-body.dark-theme .sidebar {
     background: #232323;
@@ -214,6 +282,11 @@ body#dark-body.dark-theme .sidebar .tag a {
     content: '\274C';
     font-size: 10px;
 }
+/* header */
+.mobile-menu-handler {
+    display: none;
+}
+
 .header .container {
     display: flex;
     justify-content: space-between;
@@ -221,14 +294,6 @@ body#dark-body.dark-theme .sidebar .tag a {
     align-items: center;
 }
 
-/*.header button {*/
-/*    border: 1px solid gray;*/
-/*    border-radius: 5px;*/
-/*    padding: 10px;*/
-/*    background: none;*/
-/*    cursor: pointer;*/
-/*    font-size: 1rem;*/
-/*}*/
 .logo-block a {
     color: #333333;
 }
@@ -245,11 +310,6 @@ body#dark-body.dark-theme .logo-block h1 {
     color: white;
     font-size: 24px;
 }
-/*.header button:hover {*/
-/*    background: linear-gradient(to right, #42275a, #734b6d);*/
-/*    color: #fff;*/
-/*    border: 1px solid #fff;*/
-/*}*/
 
 .header a {
     text-decoration: none;
@@ -257,6 +317,39 @@ body#dark-body.dark-theme .logo-block h1 {
 .menu-block button{
     margin-left: 20px;
 }
+@media (max-width: 768px) {
+    .mobile-menu-handler {
+        display: block;
+        text-align: center;
+        font-size: 24px;
+    }
+    .menu-block {
+        position: fixed;
+        right: 20px;
+        display: flex;
+        flex-direction: column;
+        top: 20px;
+        background: #232323;
+        width: 24px;
+        height: 24px;
+        padding: 10px;
+        overflow: hidden;
+        border-radius: 5px
+        transition: .2s;
+    }
+    .menu-block:hover {
+        width: auto;
+        height: auto;
+        box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
+    }
+    .menu-block:hover .mobile-menu-handler {
+        /*display: none;*/
+    }
+    .menu-block button{
+        margin-left: 0px;
+    }
+}
+/* post list */
 .post-panel {
     background-color: #fff;
     border-radius: 5px;
@@ -327,7 +420,16 @@ body#dark-body.dark-theme .post a {
     margin-top: 10px;
     font-size: 12px;
 }
-
+@media (max-width: 425px) {
+    .post > div {
+        -webkit-flex-direction: column;
+        -moz-flex-direction: column;
+        -ms-flex-direction: column;
+        -o-flex-direction: column;
+        flex-direction: column;
+    }
+}
+/* pagination */
 .pagination {
     margin-top: 20px;
     text-align: center;
@@ -336,7 +438,7 @@ body#dark-body.dark-theme .post a {
 .pagination a {
     color: #503358;
 }
-
+/**/
 .auth {
     background-color: #fff;
     width: 320px;
@@ -346,7 +448,9 @@ body#dark-body.dark-theme .post a {
     box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
     text-align: center;
 }
-
+body#dark-body.dark-theme .auth {
+    background-color: #232323;
+}
 .auth form p {
     padding: 10px 0;
     text-align: left;
@@ -362,7 +466,7 @@ form p .form-error {
         width: auto;
     }
 }
-
+/* page for full post content */
 .post-view {
     margin-top: 20px;
 }
@@ -377,6 +481,9 @@ body#dark-body.dark-theme .post-view a {
 .post-view .df div{
     margin-left: 20px;
 }
+.post-view .df > div > * {
+    margin-bottom: 15px;
+}
 .post-view h1 {
     margin-bottom: 20px;
 }
@@ -384,6 +491,15 @@ body#dark-body.dark-theme .post-view a {
 .post-view div ol {
     margin-left: 20px;
 }
+@media (max-width: 425px) {
+    .post-view .df {
+        flex-direction: column;
+    }
+    .post-view .df div{
+        margin-left: 0px;
+    }
+}
+/* flash message */
 .flash-popup {
     position: fixed;
     top: 0;
