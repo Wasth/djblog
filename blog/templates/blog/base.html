@@ -1,3 +1,4 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,20 +29,20 @@
                         <button class='b0'><i class="fas fa-user"></i>&nbsp;&nbsp;Profile({{ user.username }})</button>
                     </a> -->
                     <a href="{% url 'myposts' %}">
-                        <button class='b0'><i class="fas fa-clone"></i>&nbsp;&nbsp;My posts</button>
+                        <button class='b0'><i class="fas fa-clone"></i>&nbsp;&nbsp;{% trans 'My posts' %}</button>
                     </a>
                     <a href="{% url 'newpost' %}">
-                        <button class='b0'><i class="fas fa-plus"></i>&nbsp;&nbsp;Create post</button>
+                        <button class='b0'><i class="fas fa-plus"></i>&nbsp;&nbsp;{% trans 'Create post' %}</button>
                     </a>
                     <a href="{% url 'logout' %}">
-                        <button class='b0'><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Log out</button>
+                        <button class='b0'><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;{% trans 'Log out' %}</button>
                     </a>
                 {% else %}
                     <a href="{% url 'signup' %}">
-                        <button class='b0'><i class="fas fa-user-plus"></i>&nbsp;&nbsp;Sign Up</button>
+                        <button class='b0'><i class="fas fa-user-plus"></i>&nbsp;&nbsp;{% trans 'Sign Up' %}</button>
                     </a>
                     <a href="{% url 'signin' %}">
-                        <button class='b0'><i class="fas fa-sign-in-alt"></i>&nbsp;&nbsp;Sign In</button>
+                        <button class='b0'><i class="fas fa-sign-in-alt"></i>&nbsp;&nbsp;{% trans 'Sign In' %}</button>
                     </a>
                 {% endif %}
             </div>
@@ -49,13 +50,13 @@
     </div>
     <div class="container">
         <div class="content">
-            {% block content %}Something wrong, if you se this.{% endblock %}
+            {% block content %}{% trans 'Something wrong, if you se this.' %}{% endblock %}
         </div>
 
         {% block sidebar %}
             <div class="sidebar">
                 <section>
-                    <h2>Categories</h2>
+                    <h2>{% trans 'Categories' %}</h2>
                     <div>
                         {% for c in categories %}
                             {% if c.name == request.GET.c %}
@@ -64,12 +65,12 @@
                                 <p class='category'><a href="{% url 'set_cat' c.name %}">{{ c.name }}</a></p>
                             {% endif %}
                         {% empty %}
-                            <p>No categories yet..</p>
+                            <p>{% trans 'No categories yet..' %}</p>
                         {% endfor %}
                     </div>
                 </section>
                 <section>
-                    <h2>Tags</h2>
+                    <h2>{% trans 'Tags' %}</h2>
                     <div>
                         {% for t in tags %}
                             {% if t.name in request.GET.t %}
@@ -86,7 +87,7 @@
                                 </p>
                             {% endif %}
                         {% empty %}
-                            <p>No tags yet..</p>
+                            <p>{% trans 'No tags yet..' %}</p>
                         {% endfor %}
                     </div>
                 </section>
@@ -111,7 +112,7 @@
                 {% for message in messages %}
                     {{ message }}
                 {% endfor %}
-                <span class="flash-note">It will disappear automatically in 3 seconds</span>
+                <span class="flash-note">{% trans 'It will disappear automatically in 3 seconds' %}</span>
             </div>
             <script>
                 setTimeout(function () {

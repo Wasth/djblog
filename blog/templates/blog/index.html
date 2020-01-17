@@ -1,8 +1,8 @@
 {% extends 'blog/base.html' %}
 {% load static %}
-
+{% load i18n %}
 {% block title %}
-    All posts
+    {% trans 'All posts' %}
 {% endblock %}
 
 {% block content %}
@@ -44,29 +44,29 @@
             {% if post.author == user%}
             <footer>
                 <a href="{% url 'edit' post.id %}">
-                    <i class="fas fa-pen"></i> Редачить
+                    <i class="fas fa-pen"></i> {% trans 'Edit post' %}
                 </a>
             </footer>
             {% endif %}
         </article>
     {% empty %}
-        <h3 class="post">Nothing has been posted yet</h3>
+        <h3 class="post">{% trans 'Nothing has been posted yet' %}</h3>
     {% endfor %}
     {% if page_obj.paginator.num_pages > 1 %}
     <div class="pagination block">
         <span class="step-links">
             {% if page_obj.has_previous %}
-                <a href="?page=1">&laquo; first</a>
-                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                <a href="?page=1">&laquo; {% trans 'first' %}</a>
+                <a href="?page={{ page_obj.previous_page_number }}">{% trans 'previous' %}</a>
             {% endif %}
 
             <span class="current">
-                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                Page {{ page_obj.number }} {% trans 'of' %} {{ page_obj.paginator.num_pages }}
             </span>
 
             {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}">next</a>
-                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                <a href="?page={{ page_obj.next_page_number }}">{% trans 'next' %}</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">{% trans 'last' %} &raquo;</a>
             {% endif %}
         </span>
     </div>

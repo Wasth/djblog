@@ -1,0 +1,159 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-01-17 11:16+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\blog\forms.py:8 .\blog\forms.py:34
+msgid "Your username"
+msgstr "Ваше имя пользователя"
+
+#: .\blog\forms.py:9 .\blog\forms.py:37
+msgid "Your password"
+msgstr "Ваш пароль"
+
+#: .\blog\forms.py:10
+msgid "Remember Me"
+msgstr "Запомнить вход"
+
+#: .\blog\forms.py:18
+msgid "Title"
+msgstr "Заголовок"
+
+#: .\blog\forms.py:19
+msgid "Short text of post(anons)"
+msgstr "Короткий текст поста(анонс)"
+
+#: .\blog\forms.py:32
+msgid "Your email"
+msgstr "Ваш email"
+
+#: .\blog\forms.py:40
+msgid "Repeat password"
+msgstr "Повторите пароль"
+
+#: .\blog\forms.py:42
+msgid "I agree with site's Terms of Services"
+msgstr "Я согласен с условиями пользования сайта"
+
+#: .\blog\forms.py:53
+msgid "Password and repeated password must match"
+msgstr "Пароли должны совпадать"
+
+#: .\blog\templates\blog\base.html:32
+msgid "My posts"
+msgstr "Мои посты"
+
+#: .\blog\templates\blog\base.html:35
+msgid "Create post"
+msgstr "Создать пост"
+
+#: .\blog\templates\blog\base.html:38
+msgid "Log out"
+msgstr "Выход"
+
+#: .\blog\templates\blog\base.html:42 .\blog\templates\blog\signup.html:5
+#: .\blog\templates\blog\signup.html:12 .\blog\templates\blog\signup.html:28
+msgid "Sign Up"
+msgstr "Регистрация"
+
+#: .\blog\templates\blog\base.html:45 .\blog\templates\blog\signin.html:5
+#: .\blog\templates\blog\signin.html:12 .\blog\templates\blog\signin.html:21
+msgid "Sign In"
+msgstr "Войти"
+
+#: .\blog\templates\blog\base.html:53
+msgid "Something wrong, if you se this."
+msgstr "Что-то идёт не так, если вы это видите"
+
+#: .\blog\templates\blog\base.html:59
+msgid "Categories"
+msgstr "Категории"
+
+#: .\blog\templates\blog\base.html:68
+msgid "No categories yet.."
+msgstr "Категорий еще нет"
+
+#: .\blog\templates\blog\base.html:73
+msgid "Tags"
+msgstr "Теги"
+
+#: .\blog\templates\blog\base.html:90
+msgid "No tags yet.."
+msgstr "Тегов еще нет"
+
+#: .\blog\templates\blog\base.html:115
+msgid "It will disappear automatically in 3 seconds"
+msgstr "Это исчёзнет через 3 секунды"
+
+#: .\blog\templates\blog\index.html:5
+msgid "All posts"
+msgstr "Все посты"
+
+#: .\blog\templates\blog\index.html:47
+msgid "Edit post"
+msgstr "Редактировать пост"
+
+#: .\blog\templates\blog\index.html:53
+msgid "Nothing has been posted yet"
+msgstr "Постов ещё нет"
+
+#: .\blog\templates\blog\index.html:59
+msgid "first"
+msgstr "перв."
+
+#: .\blog\templates\blog\index.html:60
+msgid "previous"
+msgstr "пред."
+
+#: .\blog\templates\blog\index.html:64
+msgid "of"
+msgstr "из"
+
+#: .\blog\templates\blog\index.html:68
+msgid "next"
+msgstr "след."
+
+#: .\blog\templates\blog\index.html:69
+msgid "last"
+msgstr "посл."
+
+#: .\blog\templates\blog\newpost.html:8 .\blog\templates\blog\newpost.html:20
+msgid "Create new post"
+msgstr "Создать новый пост"
+
+#: .\blog\templates\blog\newpost.html:38
+msgid "Save post"
+msgstr "Сохранить пост"
+
+#: .\blog\views.py:117
+msgid "Incorrect login or password"
+msgstr "Неверный логин или пароль"
+
+#: .\blog\views.py:127
+msgid "Successful sign in!"
+msgstr "Успешный вход"
+
+#: .\blog\views.py:141
+msgid "Successful sign up!"
+msgstr "Успешная регистрация"
+
+#: .\blog\views.py:186
+msgid "Successful log out"
+msgstr "Успешный выход"

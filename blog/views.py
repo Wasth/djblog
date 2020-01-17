@@ -2,15 +2,13 @@ from django.contrib.auth import logout, authenticate, login
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.views.generic import ListView, FormView, DetailView, UpdateView
+from django.views.generic import ListView, FormView, DetailView
 from django.contrib import messages
 from blog.forms import SignInForm, SignUpForm, CreatePostForm
 from blog.models import Post, Tag, Category
 from django.http.request import QueryDict
+from django.utils.translation import gettext as _
 from djblog.settings import SESSION_COOKIE_AGE
-from django import forms
-from django_summernote.widgets import SummernoteWidget
-
 
 def get_refferer_urlparams(request):
     prev_params = request.META.get('HTTP_REFERER', '')
@@ -116,7 +114,7 @@ class SignIn(FormView):
         if form.is_valid():
             user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password'])
             if user is None:
-                messages.add_message(request, messages.INFO, 'Incorrect login or password')
+                messages.add_message(request, messages.INFO, _('Incorrect login or password'))
                 return render(request, 'blog/signin.html', {
                     'form': form
                 })
@@ -126,7 +124,7 @@ class SignIn(FormView):
                 else:
                     request.session.set_expiry(0)
                 login(request, user)
-                messages.add_message(request, messages.INFO, 'Successful sign in!')
+                messages.add_message(request, messages.INFO, _('Successful sign in!'))
                 return redirect('/')
 
 
@@ -140,7 +138,7 @@ class SignUp(FormView):
                                         form.cleaned_data['email'],
                                         form.cleaned_data['password'])
         user.save()
-        messages.add_message(self.request, messages.INFO, 'Successful sign up!')
+        messages.add_message(self.request, messages.INFO, _('Successful sign up!'))
         return super().form_valid(form)
 
 
@@ -163,7 +161,7 @@ class EditPost(FormView):
 
     def get_context_data(self, **kwargs):
         """Insert the form into the context dict."""
-        kwargs['page_title'] = 'Редактировать пость'
+        kwargs['page_title'] = _('Edit post')
         return super().get_context_data(**kwargs)
 
     def get_form(self, form_class=None):
@@ -185,6 +183,6 @@ class EditPost(FormView):
 
 def log_out(request):
     logout(request)
-    messages.add_message(request, messages.INFO, 'Successful log out')
+    messages.add_message(request, messages.INFO, _('Successful log out'))
 
     return redirect('index')

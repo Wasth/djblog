@@ -1,11 +1,11 @@
 {% extends 'blog/base.html' %}
 {% load static %}
-
+{% load i18n %}
 {% block title %}
     {% if page_title %}
         {{page_title}}
     {% else %}
-        Create new post
+        {% trans 'Create new post' %}
     {% endif %}
 {% endblock %}
 
@@ -17,7 +17,7 @@
             {% if page_title %}
                 {{page_title}}
             {% else %}
-                Create new post
+                {% trans 'Create new post' %}
             {% endif %}
         </h2>
         <form action="" method="post" enctype="multipart/form-data">
@@ -35,7 +35,7 @@
                 </p>
             {% endfor %}
 
-            <button>Save post!</button>
+            <button>{% trans 'Save post' %}</button>
         </form>
 
     </div>
